@@ -9,11 +9,42 @@ Import:
 Valid integers:
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
+    >>> bg.integer_validator("size", 1)
 
-Not an integer:
+Not an integer - string:
     >>> bg.integer_validator("name", "John")
     Traceback (most recent call last):
     TypeError: name must be an integer
+
+Not an integer - float:
+    >>> bg.integer_validator("price", 3.5)
+    Traceback (most recent call last):
+    TypeError: price must be an integer
+
+Not an integer - bool:
+    >>> bg.integer_validator("flag", True)
+    Traceback (most recent call last):
+    TypeError: flag must be an integer
+
+Not an integer - None:
+    >>> bg.integer_validator("val", None)
+    Traceback (most recent call last):
+    TypeError: val must be an integer
+
+Not an integer - list:
+    >>> bg.integer_validator("val", [1, 2])
+    Traceback (most recent call last):
+    TypeError: val must be an integer
+
+Not an integer - tuple:
+    >>> bg.integer_validator("val", (1, 2))
+    Traceback (most recent call last):
+    TypeError: val must be an integer
+
+Not an integer - dict:
+    >>> bg.integer_validator("val", {1: 2})
+    Traceback (most recent call last):
+    TypeError: val must be an integer
 
 Zero value:
     >>> bg.integer_validator("age", 0)
@@ -24,21 +55,6 @@ Negative value:
     >>> bg.integer_validator("distance", -4)
     Traceback (most recent call last):
     ValueError: distance must be greater than 0
-
-Float value:
-    >>> bg.integer_validator("price", 3.5)
-    Traceback (most recent call last):
-    TypeError: price must be an integer
-
-Boolean value:
-    >>> bg.integer_validator("flag", True)
-    Traceback (most recent call last):
-    TypeError: flag must be an integer
-
-None value:
-    >>> bg.integer_validator("val", None)
-    Traceback (most recent call last):
-    TypeError: val must be an integer
 
 area() not implemented:
     >>> bg.area()
